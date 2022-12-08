@@ -1,0 +1,67 @@
+﻿@model IEnumerable<projeOdev.Models.Atama>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 tm-block-col">
+    <div class="tm-bg-primary-dark tm-block tm-block-products">
+        <div class="tm-product-table-container">
+            <table class="table table-hover tm-table-small tm-product-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Öğrenci</th>
+                        <th scope="col">Ders</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Count() > 0)
+                    {
+                        foreach (var atama in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="userDatatable-content" style="align-items:center">
+                                        @atama.OgrenciDersId
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="userDatatable-content">
+                                        @atama.Ogrenci.AdSoyad
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="userDatatable-content">
+                                        @atama.Ders.DersAdi
+                                    </div>
+                                </td>
+                                <td>
+                                    <ul class="orderDatatable_actions mb-0 d-flex flex-wrap">
+                                        <li>
+                                            <a href="@Url.Action("atamaEdit","Home", new {  id=atama.OgrenciDersId  })" class="tm-product-delete-link">
+                                                <i class="far fa-edit tm-product-delete-icon"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("atamaRemove","Home", new {  id=atama.OgrenciDersId  })" class="tm-product-delete-link">
+                                                <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="3">&nbsp;</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <a href="/Home/atamaAdd"
+           class="btn btn-primary btn-block text-uppercase mb-3">Yeni Öğrenci Ata</a>
+    </div>
+</div>

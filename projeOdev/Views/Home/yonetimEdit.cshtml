@@ -1,0 +1,71 @@
+﻿@model projeOdev.Models.Yonetim
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("yonetimEdit", "Home", FormMethod.Post))
+{
+    <div class="col-lg-12">
+        <div class="card card-horizontal card-default card-md mb-4">
+            <div class="card-header">
+                <h3><b>YÖNETİM GÜNCELLE</b></h3>
+            </div>
+            <div class="card-body py-md-30">
+                <div class="horizontal-form">
+                    <form action="#">
+                        <div style="background-color:darkred; text-align:center; align-items:center;">
+                            <h3 style="color: white;">@ViewBag.Message</h3>
+                        </div>
+                        <div class="form-group row mb-25">
+                            <div class="col-sm-3 d-flex aling-items-center">
+                                <label for="inputEmailIcon" class=" col-form-label color-dark fs-14 fw-500 align-center" style="color:darkgoldenrod">
+                                    Adı Soyadı
+                                </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="with-icon">
+                                    @Html.EditorFor(model => model.AdSoyad, new { htmlAttributes = new { @class = "form-control  ih-medium ip-gray radius-xs b-light", id = "inputEmailIcon", placeholder = "adı soyadı" } })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-25">
+                            <div class="col-sm-3 d-flex aling-items-center">
+                                <label for="inputEmailIcon" class=" col-form-label color-dark fs-14 fw-500 align-center" style="color:darkgoldenrod">
+                                    Görevi
+                                </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="with-icon">
+                                    @Html.EditorFor(model => model.Gorevi, new { htmlAttributes = new { @class = "form-control  ih-medium ip-gray radius-xs b-light", id = "inputEmailIcon", placeholder = "görevi" } })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-25">
+                            <div class="col-sm-3 d-flex aling-items-center">
+                                <label for="inputEmailIcon" class=" col-form-label color-dark fs-14 fw-500 align-center" style="color:darkgoldenrod">
+                                    Yönetim Tipi
+                                </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="with-icon">
+                                    <select class="form-control  form-control-lg text-center" name="YonetimTip" id="YonetimTip">
+                                        <option>Öğretmen</option>
+                                        <option>İdare</option>
+                                        <option>Öğrenci İşleri</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layout-button mt-25">
+                            <input type="submit" value="Güncelle" class="btn btn-primary btn-default btn-squared px-30" style="width:100%" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
